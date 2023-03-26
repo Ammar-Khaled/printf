@@ -7,37 +7,76 @@ _printf() is a function that performs formatted output conversion and print data
 
 Where **format** contains the string that is printed. As _printf() is variadic function, it can receives n arguments that replace by n tags written inside the string.
 
-The format tags prototype is the following:
-
-	%[flags][length]specifier
 	
 If the program runs successfully, the **return value** is the amount of chars printed.
 	
 | Specifier | Output |
 | ------------- | ------------- |
 | c  | Character  |
-| d or i | Signed decimal integer |
 | s  | String of characters  |
-| b  | Signed binary  |
-| o  | Signed octal  |
-| u  | Unsigned integer  |
-| x  | Unsigned hexadecimal  |
-| X  | Unsigned hexadecimal (uppercase)  |
-| p  | Pointer address  |
-| r  | Reverse string of characters |
-| R  | ROT13 translation of string |
-| S  | String with special chars replaced by their ASCII value  |
 | %  | Character  |
+| d or i | Signed decimal integer |
 
-| Flags | Description | Specifiers |
-| ------------- | ------------- | ------------- | 
-| +  | Prints a plus sign (+) when the argument is a positive number. In other case, prints a minus sign (-). | i, d |
-| (space) | Prints a blank space if the argument is a positive number | i, d |
-| #  | Prints 0, 0x and 0X for o, x and X specifiers, respectively. It doesn't print anything if the argument is zero | o, x, X |
+----------------------------------------------
 
-| Length | Description | Specifiers |
-| ------------- | ------------- | ------------- | 
-| l | Prints a long int or unsigned long int | i, d, o, u, x and X |
-| h | Prints a short int or unsigned short int | i, d, o, u, x and X |
+#Examples:
+1- printing the characters 'A', 'L', 'X'
+	+Use: _printf("%c%c%c", 'A', 'L', 'X');
+	+Output: ALX
+	
+---------------------------------------------
+#Function Files
+### _printf.c
+Our Own Printf Function That Performs Formatted Output Conversion And Print Data.
 
+------------
+
+### main.h
+Header File Were All Prototypes Are Saved.
+
+------------
+
+### get_print_func.c
+Pointer To A Function That Selects The Correct Function To Perform The Operation.
+
+------------
+
+### print_buf.c
+Function That Prints The Buffer.
+
+------------
+
+### concat_to_buf.c
+Function That Concatenates A Character To The Buffer Characters.
+
+------------
+
+### print_chr.c
+Function That Writes The Character C To Stdout.
+```c
+/* Identifier : %c */
+```
+
+------------
+
+### print_str.c
+Function That Writes The String To Stdout.
+```c
+/* Identifier : %s */
+```
+
+------------
+
+### print_int.c
+Function That Prints An Integer.
+```c
+/* Identifier : %i or %d */
+```
+
+------------
+### print_prg.c
+Function That Prints "%".
+```c
+/* indentifier : %% */
+```
 ------------
