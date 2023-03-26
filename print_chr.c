@@ -13,7 +13,7 @@ int print_chr(va_list args, char *buf, unsigned int ibuf)
 	char ch;
 
 	ch = va_arg(args, int);
-	concate_to_buf(buf, ch, ibuf);
+	concat_to_buf(buf, ch, ibuf);
 
 	return (1);
 }

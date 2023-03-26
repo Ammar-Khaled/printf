@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - print formatted data
  * @format: the string format
@@ -16,7 +15,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	buf = malloc(sizeof(char) * 1024);
-	if (!foramt || !buf)
+	if (!format || !buf)
 	{
 		free(buf);
 		return (-1);
@@ -50,7 +49,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			concate_to_buffer(buf, format[i], ibuf);
+			concat_to_buf(buf, format[i], ibuf);
 			len++;
 			ibuf++;		
 		}
@@ -60,5 +59,6 @@ int _printf(const char *format, ...)
 			ibuf = 0;
 		}
 	}
-	print_buf(buf, ibuf), free(buf), va_end(args), return (len);
+	print_buf(buf, ibuf), free(buf), va_end(args);
+	return (len);
 }

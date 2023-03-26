@@ -10,10 +10,11 @@
  */
 unsigned int concat_to_buf(char *buf, char c, unsigned int ibuf)
 {
+
 	if (ibuf == 1024)
 	{
 		print_buf(buf, 1024);
-		i = 0;
+		ibuf = 0;
 	}
 	buf[ibuf] = c;
 	ibuf++;
