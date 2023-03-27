@@ -13,7 +13,7 @@ int (*get_print_func(const char *format, unsigned int index))(va_list, char *, u
 	{
 		case 'c':
 			return (print_chr);
-		/*
+		
 		case 's':
 			return (print_str);
 		case '%':
@@ -22,7 +22,7 @@ int (*get_print_func(const char *format, unsigned int index))(va_list, char *, u
 			return (print_int);
 		case 'd':
 			return (print_int);
-		*/
+		
 	}
 
 	return (NULL);	

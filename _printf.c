@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i, ibuf, len;
+	unsigned int i, ibuf;
 	char *buf;
 	int (*function)(va_list, char *, unsigned int);
 	va_list args;
@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		free(buf);
 		return (-1);
 	}
-	ibuf = len = 0;
+	ibuf =  0;
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -31,9 +31,7 @@ int _printf(const char *format, ...)
 				if (function)
 				{
 					i++;
-					function(args, buf, ibuf);
-					len++;
-					ibuf++;
+					ibuf += function(args, buf, ibuf);
 				}
 				else
 				{
@@ -49,9 +47,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			concat_to_buf(buf, format[i], ibuf);
-			len++;
-			ibuf++;		
+			ibuf = concat_to_buf(buf, format[i], ibuf);		
 		}
 		if (ibuf == 1024)
 		{
@@ -60,5 +56,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	print_buf(buf, ibuf), free(buf), va_end(args);
-	return (len);
+	return (ibuf);
 }
