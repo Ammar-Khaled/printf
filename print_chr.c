@@ -7,7 +7,7 @@
  * @ibuf: buffer index
  *
  * Return: 1 on Success
- */ 
+ */
 int print_chr(va_list args, char *buf, unsigned int ibuf)
 {
 	char ch;

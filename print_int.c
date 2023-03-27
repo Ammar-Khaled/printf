@@ -2,6 +2,10 @@
 #include <string.h>
 #include <limits.h>
 
+/**
+ * reverse_string - reverse string
+ * @s: pointer to the string
+*/
 void reverse_string(char *s)
 {
 	int len, i;
@@ -31,7 +35,13 @@ int print_int(va_list args, char *buf, unsigned int ibuf)
 	char str[100];
 
 	arg = va_arg(args, int);
-	
+
+	if (arg == 0)
+	{
+		ibuf = concat_to_buf(buf, '0', ibuf);
+		return (1);
+	}
+
 	isnegative = 0;
 
 	if (arg < 0)
@@ -40,8 +50,8 @@ int print_int(va_list args, char *buf, unsigned int ibuf)
 		isnegative = 1;
 		ibuf = concat_to_buf(buf, '-', ibuf);
 	}
-	
-	
+
+
 	for (i = 0; arg; i++)
 	{
 		digit = arg % 10;

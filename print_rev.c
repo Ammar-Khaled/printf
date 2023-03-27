@@ -1,18 +1,19 @@
 #include "main.h"
 
 /**
- * print_str - concatenates the string argument to the buffer
+ * print_rev - print string reversed
  * @args: variadic arguments list
  * @buf: buffer pointer
  * @ibuf: buffer index
  *
- * Return: number of chars added to the buffer
+ * Return: number of printed chars
  */
-int print_str(va_list args, char *buf, unsigned int ibuf)
+int print_rev(va_list args, char *buf, unsigned int ibuf)
 {
+	int i, j;
+	char null[] = "(llun)";
 	char *str;
-	char null[] = "(null)";
-	unsigned int i;
+
 
 	str = va_arg(args, char *);
 	if (!str)
@@ -23,10 +24,16 @@ int print_str(va_list args, char *buf, unsigned int ibuf)
 		}
 		return (6);
 	}
+
 	for (i = 0; str[i]; i++)
 	{
-		ibuf = concat_to_buf(buf, str[i], ibuf);
+		;
 	}
 
+	j = i - 1;
+	for (; j >= 0; j--)
+	{
+		ibuf = concat_to_buf(buf, str[j], ibuf);
+	}
 	return (i);
 }

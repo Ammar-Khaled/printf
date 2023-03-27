@@ -9,11 +9,11 @@
  */
 int (*get_print_func(const char *format, unsigned int index))(va_list, char *, unsigned int)
 {
-	switch(format[index])
+	switch (format[index])
 	{
 		case 'c':
 			return (print_chr);
-		
+
 		case 's':
 			return (print_str);
 		case '%':
@@ -22,8 +22,11 @@ int (*get_print_func(const char *format, unsigned int index))(va_list, char *, u
 			return (print_int);
 		case 'd':
 			return (print_int);
-		
-	}
+		case 'r':
+			return (print_rev);
+		case 'R':
+			return (print_rot13);
+		}
 
-	return (NULL);	
+	return (NULL);
 }
