@@ -1,14 +1,16 @@
+
 #include "main.h"
 
 /**
- * print_int - concatenates the integer argument to the buffer
+ * printpint - concatenates the integer argument to the buffer
+ * preceded by '+' if positive
  * @args: variadic arguments list
  * @buf: buffer pointer
  * @ibuf: buffer index
  *
  * Return: number of chars added to the buffer
  */
-int print_int(va_list arguments, char *buf, unsigned int ibuf)
+int printpint(va_list arguments, char *buf, unsigned int ibuf)
 {
 	int int_input;
 	unsigned int int_in, int_temp, i, div, isneg;
@@ -23,6 +25,7 @@ int print_int(va_list arguments, char *buf, unsigned int ibuf)
 	}
 	else
 	{
+		ibuf = concat_to_buf(buf, '+', ibuf);
 		int_in = int_input;
 	}
 

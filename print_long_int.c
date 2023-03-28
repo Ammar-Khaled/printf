@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- * print_int - concatenates the integer argument to the buffer
+ * printlint - concatenates the long integer argument to the buffer
  * @args: variadic arguments list
  * @buf: buffer pointer
  * @ibuf: buffer index
  *
  * Return: number of chars added to the buffer
  */
-int print_int(va_list arguments, char *buf, unsigned int ibuf)
+int printlint(va_list arguments, char *buf, unsigned int ibuf)
 {
-	int int_input;
-	unsigned int int_in, int_temp, i, div, isneg;
+	long int int_input;
+	unsigned long int int_in, int_temp, i, div, isneg;
 
-	int_input = va_arg(arguments, int);
+	int_input = va_arg(arguments, long int);
 	isneg = 0;
 	if (int_input < 0)
 	{

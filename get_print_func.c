@@ -28,6 +28,30 @@ int (*get_print_func(const char *format, unsigned int index))(va_list, char *, u
 			return (print_rot13);
 		case 'u':
 			return (print_unt);
+		case 'l':
+			switch (format[index + 1])
+			{
+			case 'i':
+			case 'd':
+				return (printlint);
+			case 'u':
+				return (printlunt);
+			}
+			break;
+		case 'h':
+			switch (format[index + 1])
+			{
+			case 'i':
+			case 'd':
+				return (printhint);
+			case 'u':
+				return (printhunt);
+			}
+			break;
+		case '+':
+			return (printpint);
+		case ' ':
+			return (print_space_int);
 		}
 
 	return (NULL);

@@ -28,13 +28,19 @@ int _printf(const char *format, ...)
 				function = get_print_func(format, i + 1);
 				if (function)
 				{
-					i++, ibuf += function(args, buf, ibuf);
+					ibuf += function(args, buf, ibuf);
+					/* forward i if flag or lenght*/
+					if (format[i + 2] == 'l' || format[i + 2] == 'h' || format[i + 2] == '+' || format[i + 2] == ' ')
+					{
+						i++;
+					}
 				}
 				else
 					fail = 1;
 			}
 			else
 				fail = 1;
+			i++;
 		}
 		else
 			ibuf = concat_to_buf(buf, format[i], ibuf);

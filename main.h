@@ -17,5 +17,11 @@ int print_int(va_list, char *, unsigned int);
 int print_rev(va_list, char *, unsigned int);
 int print_rot13(va_list, char *, unsigned int);
 int print_unt(va_list, char *, unsigned int);
+int printlint(va_list, char *, unsigned int);
+int printlunt(va_list, char *, unsigned int);
+int printhint(va_list, char *, unsigned int);
+int printhunt(va_list, char *, unsigned int);
+int printpint(va_list, char *, unsigned int);
+int print_space_int(va_list, char *, unsigned int);
 
 #endif
