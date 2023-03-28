@@ -1,24 +1,4 @@
 #include "main.h"
-#include <string.h>
-#include <limits.h>
-
-/**
- * reverse_string - reverse string
- * @s: pointer to the string
-*/
-void reverse_string(char *s)
-{
-	int len, i;
-	char tmp;
-
-	len = strlen(s);
-	for (i = 0; i < len / 2; i++)
-	{
-		tmp = s[i];
-		s[i] = s[len - 1 - i];
-		s[len - 1 - i] = tmp;
-	}
-}
 
 /**
  * print_int - concatenates the integer argument to the buffer
@@ -30,10 +10,9 @@ void reverse_string(char *s)
  */
 int print_int(va_list args, char *buf, unsigned int ibuf)
 {
-	int arg, digit, isnegative;
+	int arg, tmp_arg, div, isnegative;
 	unsigned int i;
-	char str[100];
-
+	
 	arg = va_arg(args, int);
 
 	if (arg == 0)
@@ -51,19 +30,20 @@ int print_int(va_list args, char *buf, unsigned int ibuf)
 		ibuf = concat_to_buf(buf, '-', ibuf);
 	}
 
-
-	for (i = 0; arg; i++)
+	div = 1;
+	tmp_arg = arg;/*ddd*/
+	while (tmp_arg > 9)
 	{
-		digit = arg % 10;
-		arg /= 10;
-		str[i] = digit + '0';
+		div *= 10;
+		tmp_arg /= 10;
+	}
+	/*
+	div = 100
+	*/
+	for (i = 0; div > 0; i++, div /= 10)
+	{
+		ibuf = concat_to_buf(buf, ((arg / div) % 10) + '0', ibuf);
 	}
 
-	reverse_string(str);
-	str[i] = '\0';
-	for (i = 0; str[i]; i++)
-	{
-		ibuf = concat_to_buf(buf, str[i], ibuf);
-	}
 	return (i + isnegative);
 }

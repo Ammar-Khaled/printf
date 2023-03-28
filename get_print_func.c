@@ -26,6 +26,8 @@ int (*get_print_func(const char *format, unsigned int index))(va_list, char *, u
 			return (print_rev);
 		case 'R':
 			return (print_rot13);
+		case 'u':
+			return (print_unt);
 		}
 
 	return (NULL);

@@ -10,13 +10,12 @@
  */
 int print_rot13(va_list args, char *buf, unsigned int ibuf)
 {
-	int i, j, count;
+	int i, j, is_alpha;
 	char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rotted[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	char *s;
 	char null[] = "(avyy)";
 
-	count = 0;
 	s = va_arg(args, char *);
 
 	if (!s)
@@ -30,16 +29,20 @@ int print_rot13(va_list args, char *buf, unsigned int ibuf)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (j = 0; j < 52; j++)
+		for (is_alpha = 0, j = 0; j < 52; j++)
 		{
 			if (s[i] == alphabet[j])
 			{
+				is_alpha = 1;
 				ibuf = concat_to_buf(buf, rotted[j], ibuf);
-				count++;
 				break;
 			}
 		}
+		if (!is_alpha)
+		{
+			ibuf = concat_to_buf(buf, s[i], ibuf);
+		}
 	}
 
-	return (count);
+	return (i);
 }

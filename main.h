@@ -16,6 +16,6 @@ int print_prg(va_list, char *, unsigned int);
 int print_int(va_list, char *, unsigned int);
 int print_rev(va_list, char *, unsigned int);
 int print_rot13(va_list, char *, unsigned int);
+int print_unt(va_list, char *, unsigned int);
 
-void reverse_string(char *s);
 #endif
